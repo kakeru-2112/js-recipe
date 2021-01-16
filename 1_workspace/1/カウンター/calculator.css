@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.display {
+  margin: 20px;
+}
+
+.same-button {
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.calc-button {
+  background-color: orange;
+  color: azure;
+}
+
+.number-button {
+  background-color: black;
+  color: azure;
+}

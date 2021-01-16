@@ -19,7 +19,7 @@ const equal = document.getElementById("equal-button")
 
 let display_num = ""
 let record_num = ""
-let culc_num = null
+let calc_num = null
 let calc = "0"
   
 one.onclick = function(){
@@ -74,10 +74,18 @@ zero.onclick = function(){
 }
 
 plus.onclick = function(){
-  if (culc_num===null){
-    culc_num = Number(record_num)
+  if (calc_num===null){
+    calc_num = Number(record_num)
   }else {
-    culc_num += Number(record_num)
+    if (calc === "1"){
+      calc_num = calc_num+Number(record_num)
+    }else if(calc === "2"){
+      calc_num = calc_num-Number(record_num)
+    }else if(calc === "3"){
+      calc_num = calc_num*Number(record_num)
+    }else if(calc === "4"){
+      calc_num = calc_num/Number(record_num)
+    }
   }
   display_num+="+"
   record_num = ""
@@ -86,10 +94,18 @@ plus.onclick = function(){
 
 }
 minus.onclick = function(){
-  if (culc_num===null){
-    culc_num = Number(record_num)
+  if (calc_num===null){
+    calc_num = Number(record_num)
   }else {
-    culc_num -= Number(record_num)
+    if (calc === "1"){
+      calc_num = calc_num+Number(record_num)
+    }else if(calc === "2"){
+      calc_num = calc_num-Number(record_num)
+    }else if(calc === "3"){
+      calc_num = calc_num*Number(record_num)
+    }else if(calc === "4"){
+      calc_num = calc_num/Number(record_num)
+    }
   }
   display_num+="-"
   record_num = ""
@@ -98,10 +114,18 @@ minus.onclick = function(){
 
 }
 multi.onclick = function(){
-  if (culc_num===null){
-    culc_num = Number(record_num)
+  if (calc_num===null){
+    calc_num = Number(record_num)
   }else {
-    culc_num *= Number(record_num)
+    if (calc === "1"){
+      calc_num = calc_num+Number(record_num)
+    }else if(calc === "2"){
+      calc_num = calc_num-Number(record_num)
+    }else if(calc === "3"){
+      calc_num = calc_num*Number(record_num)
+    }else if(calc === "4"){
+      calc_num = calc_num/Number(record_num)
+    }
   }
   display_num+="×"
   record_num = ""
@@ -110,10 +134,18 @@ multi.onclick = function(){
 
 }
 division.onclick = function(){
-  if (culc_num===null){
-    culc_num = Number(record_num)
+  if (calc_num===null){
+    calc_num = Number(record_num)
   }else {
-    culc_num /= Number(record_num)
+    if (calc === "1"){
+      calc_num = calc_num+Number(record_num)
+    }else if(calc === "2"){
+      calc_num = calc_num-Number(record_num)
+    }else if(calc === "3"){
+      calc_num = calc_num*Number(record_num)
+    }else if(calc === "4"){
+      calc_num = calc_num/Number(record_num)
+    }
   }
   display_num+="÷"
   record_num = ""
@@ -125,25 +157,25 @@ division.onclick = function(){
 clear.onclick = function(){
   display_num =""
   record_num = "" 
-  culc_num = null
+  calc_num = null
   calc = "0"
   display.textContent = 0
 }
 
 equal.onclick = function(){ 
   if (calc === "1"){
-    display.textContent = culc_num+Number(record_num)
+    display.textContent = calc_num+Number(record_num)
   }else if(calc === "2"){
-    display.textContent = culc_num-Number(record_num)
+    display.textContent = calc_num-Number(record_num)
   }else if(calc === "3"){
-    display.textContent = culc_num*Number(record_num)
+    display.textContent = calc_num*Number(record_num)
   }else if(calc === "4"){
-    display.textContent = culc_num/Number(record_num)
+    display.textContent = calc_num/Number(record_num)
   }
 
   display_num =""
   record_num = "" 
-  culc_num = null
+  calc_num = null
   calc = "0"
   
 }
