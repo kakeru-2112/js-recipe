@@ -14,6 +14,7 @@ const two = document.getElementById("two-button")
 const three = document.getElementById("three-button")
 const plus = document.getElementById("plus-button")
 const zero = document.getElementById("zero-button")
+const dot = document.getElementById("dot-button")
 const equal = document.getElementById("equal-button")
 
 
@@ -21,6 +22,22 @@ let display_num = ""
 let record_num = ""
 let calc_num = null
 let calc = "0"
+
+const calcFunction = function(){
+  if (calc_num===null){
+    calc_num = Number(record_num)
+  }else {
+    if (calc === "1"){
+      calc_num = calc_num+Number(record_num)
+    }else if(calc === "2"){
+      calc_num = calc_num-Number(record_num)
+    }else if(calc === "3"){
+      calc_num = calc_num*Number(record_num)
+    }else if(calc === "4"){
+      calc_num = calc_num/Number(record_num)
+    }
+  }
+}
   
 one.onclick = function(){
   display_num+="1" 
@@ -74,84 +91,36 @@ zero.onclick = function(){
 }
 
 plus.onclick = function(){
-  if (calc_num===null){
-    calc_num = Number(record_num)
-  }else {
-    if (calc === "1"){
-      calc_num = calc_num+Number(record_num)
-    }else if(calc === "2"){
-      calc_num = calc_num-Number(record_num)
-    }else if(calc === "3"){
-      calc_num = calc_num*Number(record_num)
-    }else if(calc === "4"){
-      calc_num = calc_num/Number(record_num)
-    }
-  }
+  calcFunction()
   display_num+="+"
   record_num = ""
   calc = "1"
   display.textContent = display_num
-
 }
 minus.onclick = function(){
-  if (calc_num===null){
-    calc_num = Number(record_num)
-  }else {
-    if (calc === "1"){
-      calc_num = calc_num+Number(record_num)
-    }else if(calc === "2"){
-      calc_num = calc_num-Number(record_num)
-    }else if(calc === "3"){
-      calc_num = calc_num*Number(record_num)
-    }else if(calc === "4"){
-      calc_num = calc_num/Number(record_num)
-    }
+  if (record_num !== ""){
+    calcFunction()
+    record_num = ""
+    calc = "2"
+  } else{
+    record_num+="-"
   }
   display_num+="-"
-  record_num = ""
-  calc = "2"
   display.textContent = display_num 
-
 }
 multi.onclick = function(){
-  if (calc_num===null){
-    calc_num = Number(record_num)
-  }else {
-    if (calc === "1"){
-      calc_num = calc_num+Number(record_num)
-    }else if(calc === "2"){
-      calc_num = calc_num-Number(record_num)
-    }else if(calc === "3"){
-      calc_num = calc_num*Number(record_num)
-    }else if(calc === "4"){
-      calc_num = calc_num/Number(record_num)
-    }
-  }
+  calcFunction()
   display_num+="×"
   record_num = ""
   calc = "3"
   display.textContent = display_num 
-
 }
 division.onclick = function(){
-  if (calc_num===null){
-    calc_num = Number(record_num)
-  }else {
-    if (calc === "1"){
-      calc_num = calc_num+Number(record_num)
-    }else if(calc === "2"){
-      calc_num = calc_num-Number(record_num)
-    }else if(calc === "3"){
-      calc_num = calc_num*Number(record_num)
-    }else if(calc === "4"){
-      calc_num = calc_num/Number(record_num)
-    }
-  }
+  calcFunction()
   display_num+="÷"
   record_num = ""
   calc = "4"
   display.textContent = display_num 
-
 }
 
 clear.onclick = function(){
@@ -162,22 +131,19 @@ clear.onclick = function(){
   display.textContent = 0
 }
 
-equal.onclick = function(){ 
-  if (calc === "1"){
-    display.textContent = calc_num+Number(record_num)
-  }else if(calc === "2"){
-    display.textContent = calc_num-Number(record_num)
-  }else if(calc === "3"){
-    display.textContent = calc_num*Number(record_num)
-  }else if(calc === "4"){
-    display.textContent = calc_num/Number(record_num)
-  }
+dot.onclick = function(){
+  record_num+="."
+  display_num+="."
+  display.textContent = display_num 
+}
 
+equal.onclick = function(){ 
+  calcFunction()
+  display.textContent = calc_num
   display_num =""
   record_num = "" 
   calc_num = null
   calc = "0"
-  
 }
 
 
