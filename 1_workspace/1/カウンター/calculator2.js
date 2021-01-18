@@ -19,26 +19,34 @@ const dot = document.getElementById("dot-button")
 const equal = document.getElementById("equal-button")
 
 
+let numberBox = []
+let p_list = []
+let u_list = []
+
 let record_num = ""
 let calc_num = null
-let calc = "0"
 
-const calcFunction = function(){
-  if (calc_num === null){
-    calc_num = Number(record_num)
-  }else {
-    if (calc === "1"){
-      calc_num = calc_num+Number(record_num)
-    }else if(calc === "2"){
-      calc_num = calc_num-Number(record_num)
-    }else if(calc === "3"){
-      calc_num = calc_num*Number(record_num)
-    }else if(calc === "4"){
-      calc_num = calc_num/Number(record_num)
+const calcFunction = function(k){
+  if (numberBox[k] === "1"){
+    calc_num = numberBox[k-1]+numberBox[k+1]
+  }else if (numberBox[k] === "2"){
+    calc_num = numberBox[k-1]-numberBox[k+1]
+  }else if (numberBox[k] === "3"){
+    calc_num = numberBox[k-1]*numberBox[k+1]
+  }else if (numberBox[k] === "4"){
+    calc_num = numberBox[k-1]/numberBox[k+1]
+  }
+  numberBox.splice(k-1,3,calc_num)
+}
+
+const eachminu = function(list,m){
+  for (let n=0;n<list.length;n+=1){
+    if (m<list[n]){
+      list[n]-=2
     }
   }
 }
-  
+
 one.onclick = function(){ 
   record_num+="1"
   display.textContent = record_num
@@ -81,6 +89,7 @@ zero.onclick = function(){
 }
 
 plus.onclick = function(){
+
   if(minus.classList.contains("onclick-button") == true ){
     minus.classList.remove("onclick-button")
    } else if(multi.classList.contains("onclick-button") == true ){
@@ -89,12 +98,19 @@ plus.onclick = function(){
     division.classList.remove("onclick-button")
    } 
   plus.classList.add("onclick-button")
-  calcFunction()
-  record_num = ""
-  calc = "1"
-  display.textContent = calc_num
+
+  if (record_num === ""){
+    numberBox.pop()
+  }else{
+    numberBox.push(Number(record_num))
+    record_num = ""
+  }
+  
+  numberBox.push("1")
+
 }
 minus.onclick = function(){
+
   if(plus.classList.contains("onclick-button") == true ){
     plus.classList.remove("onclick-button")
    } else if(multi.classList.contains("onclick-button") == true ){
@@ -103,12 +119,19 @@ minus.onclick = function(){
     division.classList.remove("onclick-button")
    } 
   minus.classList.add("onclick-button")
-  calcFunction()
-  record_num = ""
-  calc = "2"
-  display.textContent = calc_num
+
+  if (record_num === ""){
+    numberBox.pop()
+  }else{
+    numberBox.push(Number(record_num))
+    record_num = ""
+  }
+
+  numberBox.push("2")
+
 }
 multi.onclick = function(){
+
   if(plus.classList.contains("onclick-button") == true ){
     plus.classList.remove("onclick-button")
    } else if(minus.classList.contains("onclick-button") == true ){
@@ -117,12 +140,19 @@ multi.onclick = function(){
     division.classList.remove("onclick-button")
    } 
   multi.classList.add("onclick-button")
-  calcFunction()
-  record_num = ""
-  calc = "3"
-  display.textContent = calc_num
+
+  if (record_num === ""){
+    numberBox.pop()
+  }else{
+    numberBox.push(Number(record_num))
+    record_num = ""
+  }
+
+  numberBox.push("3")
+
 }
 division.onclick = function(){
+
   if(plus.classList.contains("onclick-button") == true ){
     plus.classList.remove("onclick-button")
    } else if(minus.classList.contains("onclick-button") == true ){
@@ -131,13 +161,22 @@ division.onclick = function(){
     multi.classList.remove("onclick-button")
    } 
   division.classList.add("onclick-button")
-  calcFunction()
-  record_num = ""
-  calc = "4"
-  display.textContent = calc_num 
+
+  if (record_num === ""){
+    numberBox.pop()
+  }else{
+    numberBox.push(Number(record_num))
+    record_num = ""
+  }
+
+  numberBox.push("4")
+
 }
 
 clear.onclick = function(){
+  numberBox = []
+  p_list = []
+  u_list = []
   record_num = "" 
   calc_num = null
   calc = "0"
@@ -173,8 +212,41 @@ plumin.onclick = function(){
 }
 
 equal.onclick = function(){ 
-  calcFunction()
-  display.textContent = calc_num
+  numberBox.push(Number(record_num))
+  console.log(numberBox)
+  for (let i=1;i<=numberBox.length-2;i+=2){
+    if (numberBox[i] === "3"){
+      p_list.push(i)
+    }else if (numberBox[i] === "4"){
+      p_list.push(i)
+    }
+    else if (numberBox[i] === "1"){
+      u_list.push(i)
+    }
+    else if (numberBox[i] === "2"){
+      u_list.push(i)
+    }
+  }
+
+  for (let i=0;i<p_list.length;i+=1){
+    calcFunction(p_list[i])
+    eachminu(p_list,p_list[i])
+    eachminu(u_list,p_list[i])
+    console.log(numberBox)
+  }
+  
+  for (let i=0;i<u_list.length;i+=1){
+    calcFunction(u_list[i])
+    eachminu(p_list,u_list[i])
+    eachminu(u_list,u_list[i])
+    console.log(numberBox)
+
+  }
+  
+
+  display.textContent = numberBox[0]
+  console.log(numberBox)
+
   record_num = "" 
   calc_num = null
   calc = "0"

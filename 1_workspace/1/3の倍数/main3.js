@@ -3,7 +3,7 @@ const genkiFuncton = function(number){
     if (n%3 === 0) {
       console.log( n +"!!!!!")
     } else {
-      var lnum = String(n)  //nを文字列に変換
+      let lnum = String(n)  //nを文字列に変換
       if (lnum.indexOf("3") !== -1){  //indexof関数->3を見つけられなかったら-1を返す
         console.log( n +"!!!!!")
       } else {
