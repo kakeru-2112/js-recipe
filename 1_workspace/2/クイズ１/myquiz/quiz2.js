@@ -1,6 +1,34 @@
 const maincontainer = document.getElementById("main-container")
 
+// ここにクイズの内容を追加してね
 const quiz = [
+  {
+    text: "ぼくの名前は何でしょう？",
+    image: "arukuma_01.jpg",
+    choices: [
+      {
+        text: "りん太君",
+        image: "rinnta.jpg",
+        feedback: "残念！同じくリンゴが有名な青森県のゆるキャラだね、、、",
+      },
+      {
+        text: "アルクマ",
+        image: "arukuma_02.jpg",
+        feedback: "正解！ぼくは長野県のゆるキャラあるクマだよ！",
+      },
+      {
+        text: "くまモン",
+        image: "kumamon.jpg",
+        feedback: "残念！熊本県のゆるキャラだよ、同じくマの仲間だけど、、！",
+      },
+      {
+        text: "ぐんまちゃん",
+        image: "gunnmatyan.jpg",
+        feedback:
+          "ぐんまってあるのに、さすがにこれ選んだ人はいないよね？笑",
+      },
+    ],
+  },
   {
     text: "長野県にある唯一の国立大学は何でしょう？",
     image: "arukumasuwaru.png",
@@ -18,19 +46,19 @@ const quiz = [
       {
         text: "信州大学",
         image: "shinshu_logo.png",
-        feedback: "正解！我が通っている大学じゃ！",
+        feedback: "正解！長野県内に５のキャンパスがあるんだよ！",
       },
       {
         text: "公立諏訪東京理科大学",
         image: "suwauniv.jpg",
         feedback:
-          "公立って書いてあるのに、さすがにこれ選んだ人はいないでしょ？笑",
+          "公立って書いてあるのに、さすがにこれもないよね？笑",
       },
     ],
   },
   {
     text: "工学部は何キャンパスでしょう？",
-    image: "arukuma.png",
+    image: "arukuma03.jpeg",
     choices: [
       {
         text: "松本キャンパス",
@@ -41,7 +69,7 @@ const quiz = [
         text: "長野キャンパス",
         image: "shinshu_engineer_img.jpg",
         feedback:
-          "正解！我らが工学キャンパス！！（ちなみに長野市には教育キャンパスも別にあるよ！））",
+          "正解！写真真ん中の建物が研究施設なんだ！！（ちなみに長野市には教育キャンパスも別にあるよ！））",
       },
       {
         text: "伊那キャンパス",
@@ -54,10 +82,13 @@ const quiz = [
         feedback: "正解！日本で唯一の繊維学部があるよ！",
       },
     ],
-  },
+  }
+
+
+
 ]
 
-//問題文表示
+//h2タグ作成
 const CreateQuestion = function(quiz_num, container) {
   const question = document.createElement("h2")
   question.className = "quiz-text"
@@ -74,9 +105,8 @@ const CreateImg = function(quiz_num, container) {
   return img
 }
 
-//選択肢(ボタン)を作る
+//buttonタグ作成
 const CreateButton = function(choices_num, quiz_num, container, feedback, img) {
-  //buttonを作成
   const button = document.createElement("button")
   button.className = "choice"
   button.textContent = quiz[quiz_num].choices[choices_num].text
@@ -86,18 +116,22 @@ const CreateButton = function(choices_num, quiz_num, container, feedback, img) {
   container.append(button)
 }
 
-//feedbackを追加
+//feedbackのためのdivタグを追加
 const CreateFeedback = function() {
   const feedback = document.createElement("div")
   feedback.className = "feedback"
   return feedback
 }
 
+// ボタンが選択されたときの処理関数
 const choose = function(choiceNumber, quiz_num, feedback, img) {
   feedback.textContent = quiz[quiz_num].choices[choiceNumber].feedback
   img.src = "image/" + quiz[quiz_num].choices[choiceNumber].image
+  //フェードインメソッド
+  img.animate([{ opacity: "0" }, { opacity: "1" }], 1500)
 }
 
+// クイズを１問作成
 const CreateQuiz = function(quiz_num) {
   //container作成
   const container = document.createElement("div")
@@ -120,8 +154,8 @@ const CreateQuiz = function(quiz_num) {
   maincontainer.append(container)
 }
 
+//用意されている問題数分のクイズを作成
 const reloadQuiz = function() {
-  //問題数分のクイズを作成
   for (let i = 0; i < quiz.length; i++) {
     CreateQuiz(i)
   }
