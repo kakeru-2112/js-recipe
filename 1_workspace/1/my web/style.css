@@ -1,0 +1,41 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgba(233, 14, 14, 0.61);
+}
+
+.title{
+  text-align: center;
+}
+
+.main_contents{
+  padding: 100px;
+}
+
+
+.contents{
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.content_img{
+  height: 200px;
+  width: 200px;
+}
+
+.theme{
+  width: 20%;
+}
+
+.main{
+  width: 50%;
+  margin-right: 50px;
+}
+
+.image{
+  width: 30%;
+}
+
+.go-quiz{
+  margin-top: 50px;
+}

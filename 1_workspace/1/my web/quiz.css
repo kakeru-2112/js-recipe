@@ -1,0 +1,23 @@
+body{
+  background-color: rgba(233, 14, 14, 0.61);
+}
+
+.mainbox{
+  text-align: center;
+}
+
+.quiz-image{
+  height: 300px;
+  width: 300px;
+  object-fit: contain;
+}
+
+.result{
+  margin-top: 100px;
+  height: 200px;
+}
+
+.result_display{
+  color: blue;
+  font-size: 100px;
+}

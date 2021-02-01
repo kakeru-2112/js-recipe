@@ -1,7 +1,5 @@
 // アップデートすべきこと
 // ％の計算
-// ACからCボタンへ変更、数字の入力が始まったらCボタンに変わり演算記号が入力された時点でその数字は確定する様だ。Cボタンを一回使ったらACボタンに戻る。また数字が入力されたらCボタンへ。
-
 
 //要素を取得
 const display = document.getElementById("display")
@@ -63,16 +61,16 @@ const eachminu = function(list, m) {
 }
 
 // ACからCボタンへ
-const C_buttonChange = function(){
-  if (!C_clear){
+const C_buttonChange = function() {
+  if (!C_clear) {
     clear.textContent = "C"
   }
   C_clear = true
 }
 
 // CからACボタンへ
-const AC_buttonChange = function(){
-  if (C_clear){
+const AC_buttonChange = function() {
+  if (C_clear) {
     clear.textContent = "AC"
   }
   C_clear = false
@@ -212,11 +210,8 @@ division.onclick = function() {
 }
 
 clear.onclick = function() {
-  // Cの時とACの時で場合分け
-  if (C_clear){
-    record_num = ""
-    AC_buttonChange()
-  }else {
+  //最終段階かそうでないかで分岐
+  if (numberBox.length === 1){
     // すべての定義した変数、配列などをリセットして表示は０にする
     numberBox = []
     p_list = []
@@ -232,6 +227,32 @@ clear.onclick = function() {
       multi.classList.remove("onclick-button")
     } else if (division.classList.contains("onclick-button") == true) {
       division.classList.remove("onclick-button")
+    }
+
+    AC_buttonChange()
+  }else {
+    // Cの時とACの時で場合分け
+    if (C_clear) {
+      record_num = ""
+      display.textContent = 0
+      AC_buttonChange()
+    } else {
+      // すべての定義した変数、配列などをリセットして表示は０にする
+      numberBox = []
+      p_list = []
+      u_list = []
+      record_num = ""
+      calc_num = null
+      display.textContent = 0
+      if (plus.classList.contains("onclick-button") == true) {
+        plus.classList.remove("onclick-button")
+      } else if (minus.classList.contains("onclick-button") == true) {
+        minus.classList.remove("onclick-button")
+      } else if (multi.classList.contains("onclick-button") == true) {
+        multi.classList.remove("onclick-button")
+      } else if (division.classList.contains("onclick-button") == true) {
+        division.classList.remove("onclick-button")
+      }
     }
   }
 }
