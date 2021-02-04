@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>my web</title>
   <link rel='stylesheet' href='style.css'>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
 </head>
 <body>
   <div class="main_contents">
@@ -17,19 +18,17 @@
       <div class="intro-content">
         こんにちは！この記事を見てくださってありがとうございます。水野駆（みずのかける）と申します。この記事を読むことであなたはきっと"かける"のことをもっと深く知りたいと思うようになるでしょう！最後にクイズも用意したので挑戦してみてね！！
       </div>
-      <div class="image">
-        <img src="image/" class="content_img"></img>
-      </div>
+      <div class="circle" id="js-circle"></div>
     </div>
 
     <div class="contents">
       <div class="theme">
-        <h3>◎基本情報</h3>
+        <h3>◎ 基本情報</h3>
       </div>
       <div class="main">
         <br>・２０歳（２０００年１０月８日生まれ）
-        <br>・群馬県明和町にて育つ
-        <br>・四人兄弟の長男！
+        <br>・群馬県明和町にて育つ（群馬県南部）
+        <br>・四人兄弟の長男！（みんな男なのが驚かれるところ）
         <br>・現在は信州大学に在学していて、長野県長野市に住んでいる。
       </div>
       <div class="image">
@@ -39,7 +38,7 @@
 
     <div class="contents">
       <div class="theme">
-        <h3>◎何を学んでる？</h3>
+        <h3>◎ 何を学んでる？</h3>
       </div>
       <div class="main">
         今は、工学部の情報系で勉強しています。なんで、この学科にしたかというと特に理由はなく受験で受かりやすかったところで選んでしまいました。。でも、この学科で勉強してみてプログラミングが楽しいって思えて、個人的にも何か学びたいなと思い、ギークサロンにも入会しました。将来はエンジニアになれたらいいかなーって最近思うようになりました。
@@ -51,7 +50,7 @@
 
     <div class="contents">
       <div class="theme">
-        <h3>◎趣味</h3>
+        <h3>◎ 趣味</h3>
       </div>
       <div class="main">
         趣味はＫ－ＰＯＰが好きなのと韓国ドラマが好きです。高３の受験期にたまたま目にしたＴＷＩＣＥにはまってしまったのがきっかけで今はＫ－ＰＯＰのガールズ中心に好きですねー。ボーイズもＢＴＳとＢＩＧＢＡＮＧは歌聞きますね。（ザ王道って感じですけど）韓国ドラマはハマったら二日くらいで見ちゃいます。だから、長期休み中にしかネットフリックスは登録しません。去年有名になった愛の不時着は絶対見てくださいね！！あ、あと少し韓国語話せます！
@@ -63,7 +62,7 @@
 
     <div class="contents">
       <div class="theme">
-        <h3>◎アルバイト</h3>
+        <h3>◎ アルバイト</h3>
       </div>
       <div class="main">
         今僕がしているのは、サッカーの試合運営スタッフです！松本市に山雅というＪ２のサッカーチームがあって、そのホームにて働いています。（ちなみに、一昨年はＪ１でした・・）僕は特にサッカーが好きなわけではないですが、この職場は大学生がとても多いのでサークルみたいな気分でやっています。ほかにも、たまにコンサートスタッフとかイベント系を中心にやったりします。
@@ -73,14 +72,17 @@
       </div>
     </div>
 
-
-    <div class="go_quiz" id="go_quiz">
-      ここまでちゃんと読んでくれた、君ならクイズもバッチリだよね？？
-      <br><a href="quiz.html">ここからクイズに挑戦する🔥</a>
-    </div>
-
   </div>
 
+  <div class="go_quiz" id="go_quiz">
+    <div class="lastcomm">
+      ここまでちゃんと読んでくれた、君ならクイズもバッチリだよね？？
+      <div id="click" class="click">
+        <p>ここからクイズに挑戦する🔥</p>
+      </div>
+    </div>
+    
+  </div>
 
   <script src="main.js"></script>
 </body>

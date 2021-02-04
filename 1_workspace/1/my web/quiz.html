@@ -4,28 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>my quiz</title>
+
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
   <link rel='stylesheet' href='quiz.css'>
+  
 </head>
 <body>
   <div class="mainbox">
-    <div class="bg-image">
-      <div class="bg-mask">
-        <div><h1>長野県についてどれくらい知ってるかな？？</h1></div>
+        <div class="title">
+          <h1>かけるについてどれくらい知ってるかな？？</h1>
+          <p>最初に押したボタンでスコアが出るよ！！でも、すべての選択肢を開いてみてね</p>
+        </div>
         <div id="main-container">
-        <!-- ここにcontainerを追加する -->
+         <!-- ここにcontainerを追加する -->
           
         </div>
-      </div>
-    </div>
     <div class="result">
-      <button id="result_button">結果発表</button>
+      <a class="result_button" id="result_button">結果発表</a>
       <div id="result_display" class="result_display"></div>
     </div>
   </div>
 
 
-  <div class="go-main">
-      <a href="index.html">☜　前ページに戻る</a>
+  <div class="go-main" id="go-main">
+    <div class="back"><a href="index.html">☜　前ページに戻る</a></div>
+      <div id="page_top"><a href="#"></a></div>
   </div>
 
   <script src="quiz.js"></script>

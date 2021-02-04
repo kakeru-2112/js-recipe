@@ -1,14 +1,29 @@
 body{
-  background-color: rgba(233, 14, 14, 0.61);
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  /* background-color: rgba(233, 14, 14, 0.61); */
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)),
+  url(image/orora.jpeg);
+  background-size: cover;
+}
+
+.title{
+  padding-top: 50px;
 }
 
 .mainbox{
   text-align: center;
+  color: whitesmoke;
+}
+
+.container{
+  margin-top: 50px;
 }
 
 .quiz-image{
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
   object-fit: contain;
 }
 
@@ -18,6 +33,108 @@ body{
 }
 
 .result_display{
-  color: blue;
+  color: #da0d6c;
   font-size: 100px;
+  margin-top: 20px;
+  transform: rotate(-10deg);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.go-main{
+  margin-top: 50px;
+  background-color: #F2F2F2;
+  height: 200px;
+  display: flex;
+}
+
+.back{
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+.back a{
+  color: blue;
+}
+
+.feedback{
+  margin-bottom: 20px;
+}
+
+.choice{
+  background-color: #00FFFF;
+  border-color: #FFF;
+  width: 150px;
+  margin-right: 20px;
+  cursor : pointer;
+}
+
+.result_button {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid#00FFFF;
+  font-size: 16px;
+  color: #00FFFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.result_button:hover {
+  background-color:#00FFFF;
+  border-color: #00FFFF;
+  color: #FFF;
+  cursor : pointer;
+}
+
+#page_top{
+  width: 90px;
+  height: 90px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #ef3f98;
+  opacity: 0.6;
+  border-radius: 50%;
+}
+
+/* top戻る */
+#page_top a{
+  position: relative;
+  display: block;
+  width: 90px;
+  height: 90px;
+  text-decoration: none;
+}
+
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f102';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -40px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+#page_top a::after{
+  content: 'PAGE TOP';
+  font-size: 13px;
+  color: #fff;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
 }
